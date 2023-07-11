@@ -1,0 +1,90 @@
+body {
+    margin: 0px;
+    min-width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 {
+    text-align: center;
+    margin: 0px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 12px;
+    gap: 30px;
+}
+
+.calculator.body, .calculator.screen {
+    border: 3px solid saddlebrown;
+    border-radius: 5px;
+}
+
+.calculator.body {
+    display: flex;
+    flex-direction: column;
+    background-color: grey;
+    padding: 10px;
+}
+
+.calculator.screen {
+    background-color: beige;
+    height: 108px;
+    width: 550px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.number.operation {
+    color: #d000cd;
+    font-size: 20px;
+}
+
+.number.result {
+    color: #199797;
+    font-size: 64px;
+}
+
+.calculator.buttons {
+    margin-top: 33px;
+    flex-direction: column;
+    width: 576px;
+}
+
+.calculator.buttons.control, .calculator.buttons.operation {
+    display: flex;
+    margin-top: 0px;
+    flex-direction: row;
+}
+
+.calculator.buttons.control {
+    gap: 13px;
+    margin-bottom: 13px;
+}
+
+.button.control {
+    flex: 1;
+}
+
+.calculator.buttons.operation {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 13px;
+}
+
+.button {
+    flex: 0 1 23%;
+    height: 60px;
+}
+
+.footer {
+    margin-bottom: 13px;
+}
