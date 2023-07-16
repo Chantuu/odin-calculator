@@ -106,5 +106,26 @@ topButtons.forEach(button => button.addEventListener('click', e => {
         thirdOperandSpan.innerText = '';
 
         screenResultSpan.innerText = '';
+    } else if (buttonElement.innerText === 'Delete') {
+        if (firstOperand !== '' && operator !== '' && secondOperand !== '') {
+            secondOperand = secondOperand.slice(0, secondOperand.length - 1);
+            thirdOperandSpan.innerText = secondOperand;
+
+            if (secondOperand.length === 0) {
+                secondOperand = '';
+                thirdOperandSpan.innerText = secondOperand;
+            }
+        } else if (firstOperand !== '' && operator !== '' && secondOperand === '') {
+            operator = '';
+            secondOperandSpan.innerText = operator;
+        } else if (firstOperand !== '' && operator === '' && secondOperand === '') {
+            firstOperand = firstOperand.slice(0, firstOperand.length - 1);
+            firstOperandSpan.innerText = firstOperand;
+
+            if (firstOperand.length === 0) {
+                firstOperand = '';
+                firstOperandSpan.innerText = firstOperand;
+            }
+        }
     }
 }));
