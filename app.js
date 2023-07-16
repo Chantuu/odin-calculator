@@ -1,4 +1,6 @@
-const screenOperationSpan = document.querySelector('.number.operation');
+const firstOperandSpan = document.querySelector('.number.operation.first');
+const secondOperandSpan = document.querySelector('.number.operation.second');
+const thirdOperandSpan = document.querySelector('.number.operation.third');
 const screenResultSpan = document.querySelector('.number.result');
 
 let firstOperand = '';
@@ -11,10 +13,10 @@ numberButtons.forEach(number => number.addEventListener('click', e => {
 
     if (!operator) {
         firstOperand += buttonNode.innerText;
-        screenOperationSpan.innerText = firstOperand;
+        firstOperandSpan.innerText = firstOperand;
     } else {
-        secondOperand = buttonNode.innerText;
-        screenOperationSpan.innerText += secondOperand;
+        secondOperand += buttonNode.innerText;
+        thirdOperandSpan.innerText = secondOperand;
     }
 }));
 
@@ -24,7 +26,7 @@ operatorButtons.forEach(number => number.addEventListener('click', e => {
 
     if (operator === '') {
         operator = buttonNode.innerText;
-        screenOperationSpan.innerText += operator;
+        secondOperandSpan.innerText += operator;
     }
 }));
 
