@@ -91,3 +91,20 @@ dotButton.addEventListener('click', () => {
 
 const evaluatorButton = document.querySelector('.button.evaluator');
 evaluatorButton.addEventListener('click', operate);
+
+const topButtons = document.querySelectorAll('.button.control');
+topButtons.forEach(button => button.addEventListener('click', e => {
+    const buttonElement = e.target;
+
+    if (buttonElement.innerText === 'Clear') {
+        firstOperand = '';
+        operator = '';
+        secondOperand = '';
+
+        firstOperandSpan.innerText = '';
+        secondOperandSpan.innerText = '';
+        thirdOperandSpan.innerText = '';
+
+        screenResultSpan.innerText = '';
+    }
+}));
