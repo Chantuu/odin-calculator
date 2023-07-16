@@ -7,6 +7,29 @@ let firstOperand = '';
 let operator = '';
 let secondOperand = '';
 
+function operateCleanup(result) {
+    secondOperand = '';
+    operator = ''
+    firstOperand = `${result}`;
+    screenResultSpan.innerText = result;
+}
+
+function operate() {
+    if (operator === '+') {
+        let result = `${+firstOperand + +secondOperand}`;
+        operateCleanup(result);
+    } else if (operator === '-') {
+        let result = `${+firstOperand - +secondOperand}`;
+        operateCleanup(result);
+    } else if (operator === '*') {
+        let result = `${+firstOperand * +secondOperand}`;
+        operateCleanup(result);
+    } else if (operator === '/') {
+        let result = `${+firstOperand / +secondOperand}`;
+        operateCleanup(result);
+    }
+}
+
 const numberButtons = document.querySelectorAll('.button.number');
 numberButtons.forEach(number => number.addEventListener('click', e => {
     const buttonNode = e.target;
@@ -23,10 +46,15 @@ numberButtons.forEach(number => number.addEventListener('click', e => {
 const operatorButtons = document.querySelectorAll('.button.operator');
 operatorButtons.forEach(number => number.addEventListener('click', e => {
     const buttonNode = e.target;
+    if (screenResultSpan.innerText !== '') {
+        firstOperandSpan.innerText = screenResultSpan.innerText;
+        screenResultSpan.innerText = '';
+        thirdOperandSpan.innerText = '';
+    }
 
     if (operator === '') {
         operator = buttonNode.innerText;
-        secondOperandSpan.innerText += operator;
+        secondOperandSpan.innerText = operator;
     }
 }));
 
@@ -50,3 +78,5 @@ dotButton.addEventListener('click', () => {
     }
 });
 
+const evaluatorButton = document.querySelector('.button.evaluator');
+evaluatorButton.addEventListener('click', operate);
