@@ -30,3 +30,23 @@ operatorButtons.forEach(number => number.addEventListener('click', e => {
     }
 }));
 
+const dotButton = document.querySelector('.button.dot');
+dotButton.addEventListener('click', () => {
+    if (operator === '') {
+        if (!firstOperand.includes('.') && firstOperand === '') {
+            firstOperand = '0.';
+        } else if (!firstOperand.includes('.')) {
+            firstOperand += '.';
+        }
+        firstOperandSpan.innerText = firstOperand;
+    } else {
+        console.log(secondOperand.includes('.'));
+        if (!secondOperand.includes('.') && secondOperand === '') {
+            secondOperand = '0.';
+        } else if (!secondOperand.includes('.')) {
+            secondOperand += '.';
+        }
+        thirdOperandSpan.innerText = secondOperand;
+    }
+});
+
