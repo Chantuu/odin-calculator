@@ -17,6 +17,22 @@ function operateCleanup(result) {
     screenResultSpan.innerText = result;
 }
 
+/* Clear button functionality */
+function clear() {
+     /* Clears calculator variables */
+     firstOperand = '';
+     operator = '';
+     secondOperand = '';
+
+     /* Clears calculator operation screen spans */
+     firstOperandSpan.innerText = '';
+     secondOperandSpan.innerText = '';
+     thirdOperandSpan.innerText = '';
+
+     /* Clears calculator result screen span */
+     screenResultSpan.innerText = '';
+}
+
 function operate() {
     /* Checks for digit after . in second operand and automatically adds 0 if no digit is present after .*/
     if ((secondOperand.lastIndexOf('.') + 1) === secondOperand.length && secondOperand.length > 0) {
@@ -34,6 +50,11 @@ function operate() {
         let result = `${+firstOperand * +secondOperand}`;
         operateCleanup(result);
     } else if (operator === '/') {
+        if (+secondOperand === 0) {
+            alert('Error: You can not divide on 0!');
+            clear();
+            return;
+        }
         let result = `${+firstOperand / +secondOperand}`;
         operateCleanup(result);
     }
@@ -113,19 +134,7 @@ topButtons.forEach(button => button.addEventListener('click', e => {
 
     /* Clear button functionality */
     if (buttonElement.innerText === 'Clear') {
-        
-        /* Clears calculator variables */
-        firstOperand = '';
-        operator = '';
-        secondOperand = '';
-
-        /* Clears calculator operation screen spans */
-        firstOperandSpan.innerText = '';
-        secondOperandSpan.innerText = '';
-        thirdOperandSpan.innerText = '';
-
-        /* Clears calculator result screen span */
-        screenResultSpan.innerText = '';
+        clear();
     } 
     
     /* Delete button functionality */
