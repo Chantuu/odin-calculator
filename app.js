@@ -15,6 +15,11 @@ function operateCleanup(result) {
 }
 
 function operate() {
+    if ((secondOperand.lastIndexOf('.') + 1) === secondOperand.length && secondOperand.length > 0) {
+        secondOperand += '0';
+        thirdOperandSpan.innerText += '0';
+    }
+
     if (operator === '+') {
         let result = `${+firstOperand + +secondOperand}`;
         operateCleanup(result);
@@ -46,6 +51,12 @@ numberButtons.forEach(number => number.addEventListener('click', e => {
 const operatorButtons = document.querySelectorAll('.button.operator');
 operatorButtons.forEach(number => number.addEventListener('click', e => {
     const buttonNode = e.target;
+    
+    if ((firstOperand.lastIndexOf('.') + 1) === firstOperand.length && firstOperand.length > 0) {
+        firstOperand += '0';
+        firstOperandSpan.innerText += '0';
+    }
+
     if (screenResultSpan.innerText !== '') {
         firstOperandSpan.innerText = screenResultSpan.innerText;
         screenResultSpan.innerText = '';
